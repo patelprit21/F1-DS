@@ -12,6 +12,7 @@ typedef struct {
 
 
 void fillFlightInfo(FlightInfo* flightInfo, char* destination, char* date);
+void printFlightInfo(FlightInfo flightInfo[]);
 
 int main(){
     FlightInfo flightInfo[MAX_FLIGHTS];
@@ -41,11 +42,13 @@ int main(){
         }
         date[strlen(date)-1] ='\0';
 
-        fillFlightInfo(&flightInfo[10-flights], destination, date);
-        printf("%s %s\n", flightInfo[10-flights].destination, flightInfo[10-flights].date);
+        fillFlightInfo(&flightInfo[9-flights], destination, date);
     }
 
-    
+    // print flight data
+    printFlightInfo(flightInfo);
+
+
     return 0;
 }
 
@@ -59,4 +62,12 @@ void fillFlightInfo(FlightInfo * FlightInfo, char* destination, char* date){
     strcpy(FlightInfo->destination, destination);
     strcpy(FlightInfo->date, date);
 
+}
+
+void printFlightInfo(FlightInfo flightInfo[]){
+    printf("--------------- Flights Information ---------------\n", flightInfo[0].date);
+    for(int i=0;i<MAX_FLIGHTS;i++){
+        
+        printf("%-35s %-35s\n", flightInfo[i].destination, flightInfo[i].date);
+    }
 }
