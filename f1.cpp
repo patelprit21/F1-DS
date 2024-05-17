@@ -9,6 +9,9 @@ typedef struct {
     char* date;
 }FlightInfo;
 
+
+void fillFlightInfo(FlightInfo* flightInfo, char* destination, char* date);
+
 int main(){
     FlightInfo flightInfo[10];
     char* destination = (char*)malloc(MAX_INPUT_LENGTH + 1);
@@ -17,19 +20,28 @@ int main(){
     // take input of date and destination
     printf("Hello User, Enter the destinations and dates for  each flights as specified below.\n\n");
 
+    int flights = 10;
 
-    // take destination input
-    if(fgets(destination, MAX_INPUT_LENGTH, stdin) == NULL){
-        printf("Error in reading destination\n");
-    }
-    destination[strlen(destination)-1] ='\0';
+    while(flights--){
 
-    // // take date input
-    if(fgets(date, MAX_INPUT_LENGTH, stdin) == NULL){
-        printf("Error in reading date\n");
+        printf("--------------- Flight %d ---------------\n", 10- flights);
+
+        // take destination input
+        printf("Destination: ");
+        if(fgets(destination, MAX_INPUT_LENGTH, stdin) == NULL){
+            printf("Error in reading destination\n");
+        }
+        destination[strlen(destination)-1] ='\0';
+
+        // take date input
+        printf("Date: ");
+        if(fgets(date, MAX_INPUT_LENGTH, stdin) == NULL){
+            printf("Error in reading date\n");
+        }
+        date[strlen(date)-1] ='\0';
+
+
     }
-    date[strlen(date)-1] ='\0';
-    
 
 
     return 0;
