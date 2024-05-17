@@ -48,6 +48,14 @@ int main(){
     // print flight data
     printFlightInfo(flightInfo);
 
+    // Free allocated memory
+    free(destination);
+    free(date);
+    flights = MAX_FLIGHTS;
+    while(flights--){
+        free(flightInfo[9-flights].destination);
+        free(flightInfo[9-flights].date);
+    }
 
     return 0;
 }
@@ -67,7 +75,6 @@ void fillFlightInfo(FlightInfo * FlightInfo, char* destination, char* date){
 void printFlightInfo(FlightInfo flightInfo[]){
     printf("--------------- Flights Information ---------------\n", flightInfo[0].date);
     for(int i=0;i<MAX_FLIGHTS;i++){
-        
         printf("%-35s %-35s\n", flightInfo[i].destination, flightInfo[i].date);
     }
 }
